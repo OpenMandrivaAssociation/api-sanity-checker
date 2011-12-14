@@ -1,7 +1,7 @@
 Summary:	Automatic generator of unit tests for C/C++ libraries
 Name:		api-sanity-checker
 Version:	1.12.9
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		Development/Other
 License:	GPLv1+ or LGPLv2+
 URL:		http://forge.ispras.ru/projects/api-sanity-autotest
