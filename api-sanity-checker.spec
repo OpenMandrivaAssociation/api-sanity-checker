@@ -1,14 +1,13 @@
 Summary:	Automatic generator of unit tests for C/C++ libraries
 Name:		api-sanity-checker
 Version:	1.12.9
-Release:	%mkrel 3
+Release:	4
 Group:		Development/Other
 License:	GPLv1+ or LGPLv2+
-URL:		http://forge.ispras.ru/projects/api-sanity-autotest
+URL:		http://ispras.linuxbase.org/index.php/API_Sanity_Checker
 Source0:	http://forge.ispras.ru/attachments/download/1278/api-sanity-checker-%{version}.tar.gz
 Requires:	gcc-c++
 Requires:	binutils
-BuildRequires:  help2man
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -31,12 +30,6 @@ useful features.
 %prep
 %setup -q
 chmod 0644 LICENSE.txt
-chmod 0755 %{name}.pl
-cp %{name}.pl %{name}
-# Generate man page
-help2man -N --no-discard-stderr --help-option="--info" -o %{name}.1 ./%{name}
-sed -i 's/\(.\)/\n\1/' %{name}.1
-sed -i 's/API "1"/API-SANITY-CHECKER "1"/' %{name}.1
 
 %build
 # Nothing to build.
@@ -44,8 +37,6 @@ sed -i 's/API "1"/API-SANITY-CHECKER "1"/' %{name}.1
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_prefix}
-mkdir -p %{buildroot}%{_mandir}/man1
-install -m 0644 %{name}.1 %{buildroot}%{_mandir}/man1
 perl Makefile.pl -install --prefix=%{_prefix} --destdir=%{buildroot}
 
 %clean
@@ -53,6 +44,5 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%{_mandir}/man1/*
 %doc LICENSE.txt doc/*
 %{_bindir}/%{name}
