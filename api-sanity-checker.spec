@@ -46,3 +46,20 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %doc LICENSE.txt doc/*
 %{_bindir}/%{name}
+
+
+%changelog
+* Tue May 22 2012 Andrey Ponomarenko <andrey.ponomarenko@rosalab.ru> 1.12.9-4
++ Revision: 799983
+- Removed man
+
+* Wed Feb 08 2012 Andrey Ponomarenko <andrey.ponomarenko@rosalab.ru> 1.12.9-3
++ Revision: 771859
+- Added man pages. Corrected dependencies.
+
+* Wed Dec 14 2011 Andrey Ponomarenko <andrey.ponomarenko@rosalab.ru> 1.12.9-2
++ Revision: 740924
+- Bumped release version.
+- Initial Mandriva package
+- Created package structure for api-sanity-checker.
+
