@@ -1,7 +1,7 @@
 Summary:	Automatic generator of unit tests for C/C++ libraries
 Name:		api-sanity-checker
 Version:	1.12.9
-Release:	4
+Release:	5
 Group:		Development/Other
 License:	GPLv1+ or LGPLv2+
 URL:		http://ispras.linuxbase.org/index.php/API_Sanity_Checker
