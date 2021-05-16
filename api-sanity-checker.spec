@@ -1,15 +1,15 @@
 Summary:	Automatic generator of unit tests for C/C++ libraries
 Name:		api-sanity-checker
-Version:	1.12.9
-Release:	5
+Version:	1.98.7
+Release:	1
 Group:		Development/Other
 License:	GPLv1+ or LGPLv2+
-URL:		http://ispras.linuxbase.org/index.php/API_Sanity_Checker
-Source0:	http://forge.ispras.ru/attachments/download/1278/api-sanity-checker-%{version}.tar.gz
+URL:		https://github.com/lvc/api-sanity-checker/
+Source0:	https://github.com/lvc/api-sanity-checker/archive/refs/tags/%{version}.tar.gz
 Requires:	gcc-c++
 Requires:	binutils
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	abi-compliance-checker
 
 %description
 API Sanity Checker (ASC) is an automatic generator of basic unit tests
@@ -28,14 +28,12 @@ of tests, random test generation mode, specialized data types and other
 useful features.
 
 %prep
-%setup -q
-chmod 0644 LICENSE.txt
+%autosetup -p1
 
 %build
 # Nothing to build.
 
 %install
-rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_prefix}
 perl Makefile.pl -install --prefix=%{_prefix} --destdir=%{buildroot}
 
@@ -44,22 +42,6 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc LICENSE.txt doc/*
+%doc doc/*
 %{_bindir}/%{name}
-
-
-%changelog
-* Tue May 22 2012 Andrey Ponomarenko <andrey.ponomarenko@rosalab.ru> 1.12.9-4
-+ Revision: 799983
-- Removed man
-
-* Wed Feb 08 2012 Andrey Ponomarenko <andrey.ponomarenko@rosalab.ru> 1.12.9-3
-+ Revision: 771859
-- Added man pages. Corrected dependencies.
-
-* Wed Dec 14 2011 Andrey Ponomarenko <andrey.ponomarenko@rosalab.ru> 1.12.9-2
-+ Revision: 740924
-- Bumped release version.
-- Initial Mandriva package
-- Created package structure for api-sanity-checker.
-
+%{_datadir}/api-sanity-checker
